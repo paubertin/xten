@@ -3,6 +3,7 @@
 #include <memory>
 #include "core.h"
 #include "spdlog/spdlog.h"
+#include "spdlog/fmt/ostr.h"
 
 namespace xten {
 
@@ -11,12 +12,12 @@ namespace xten {
 	public:
 		static void init();
 
-		inline static std::shared_ptr<spdlog::logger>& getCoreLogger() { return s_coreLogger; }
-		inline static std::shared_ptr<spdlog::logger>& getClientLogger() { return s_clientLogger; }
+		inline static std::shared_ptr<spdlog::logger>& getCoreLogger() { return _coreLogger; }
+		inline static std::shared_ptr<spdlog::logger>& getClientLogger() { return _clientLogger; }
 
 	private:
-		static std::shared_ptr<spdlog::logger> s_coreLogger;
-		static std::shared_ptr<spdlog::logger> s_clientLogger;
+		static std::shared_ptr<spdlog::logger> _coreLogger;
+		static std::shared_ptr<spdlog::logger> _clientLogger;
 	};
 
 }

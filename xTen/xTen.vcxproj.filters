@@ -1,42 +1,35 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    <Filter Include="xten">
+      <UniqueIdentifier>{E4D7A07C-D00E-A20D-79FB-871065111E0F}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\xten\core.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
+    <ClInclude Include="src\xten.h" />
     <ClInclude Include="src\xten\application.h">
-      <Filter>Header Files</Filter>
+      <Filter>xten</Filter>
     </ClInclude>
-    <ClInclude Include="src\xten.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\xten\core.h">
+      <Filter>xten</Filter>
     </ClInclude>
     <ClInclude Include="src\xten\entrypoint.h">
-      <Filter>Header Files</Filter>
+      <Filter>xten</Filter>
     </ClInclude>
     <ClInclude Include="src\xten\log.h">
-      <Filter>Header Files</Filter>
+      <Filter>xten</Filter>
     </ClInclude>
+    <ClInclude Include="src\xten\events\event.h" />
+    <ClInclude Include="src\xten\events\mouseEvent.h" />
+    <ClInclude Include="src\xten\events\applicationEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\xten\application.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>xten</Filter>
     </ClCompile>
     <ClCompile Include="src\xten\log.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>xten</Filter>
     </ClCompile>
+    <ClCompile Include="src\xten\events\keyEvent.h" />
   </ItemGroup>
 </Project>

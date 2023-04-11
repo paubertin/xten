@@ -1,5 +1,7 @@
 #include "application.h"
-
+#include "events/event.h"
+#include "events/applicationEvent.h"
+#include "log.h"
 
 namespace xten {
 
@@ -13,6 +15,8 @@ namespace xten {
 
 	void Application::run()
 	{
+		WindowResizeEvent evt(1200, 780);
+		XT_TRACE(evt);
 		while (true);
 	}
 
