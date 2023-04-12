@@ -2,8 +2,6 @@
 
 #include "event.h"
 
-#include <sstream>
-
 namespace xten {
 
 	class XTEN_API MouseMovedEvent : public Event

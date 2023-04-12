@@ -1,3 +1,6 @@
 [submodule ".\\xTen\\vendor\\spdlog"]
 	path = .\\xTen\\vendor\\spdlog
 	url = https://github.com/gabime/spdlog.git
+[submodule ".\\xTen\\vendor\\GLFW"]
+	path = .\\xTen\\vendor\\GLFW
+	url = https://github.com/paubertin/glfw

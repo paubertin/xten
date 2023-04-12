@@ -10,6 +10,12 @@ workspace "xTen"
 
 outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 
+-- include directories relative to root folder
+IncludeDir = {}
+IncludeDir["GLFW"] = "xTen/vendor/GLFW/include"
+
+include "xTen/vendor/GLFW"
+
 project "xTen"
 	location "xTen"
 	kind "SharedLib"
@@ -17,6 +23,9 @@ project "xTen"
 
 	targetdir  ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir  ("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	pchheader "xtpch.h"
+	pchsource "xTen/src/xtpch.cpp"
 
 	files
 	{
@@ -27,7 +36,14 @@ project "xTen"
 	includedirs
 	{
 		"%{prj.name}/vendor/spdlog/include",
-		"%{prj.name}/src"
+		"%{prj.name}/src",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"

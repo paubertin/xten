@@ -2,9 +2,6 @@
 
 #include "xten/core.h"
 
-#include <string>
-#include <functional>
-
 namespace xten {
 
 	enum class EventType

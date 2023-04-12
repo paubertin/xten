@@ -1,6 +1,7 @@
 #pragma once
 
 #include "core.h"
+#include "window.h"
 
 namespace xten {
 
@@ -11,6 +12,10 @@ namespace xten {
 		virtual ~Application();
 
 		void run();
+
+	private:
+		std::unique_ptr<Window> _window;
+		bool _running = true;
 	};
 
 	// to be defined in client

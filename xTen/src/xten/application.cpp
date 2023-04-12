@@ -1,12 +1,13 @@
+#include "xtpch.h"
 #include "application.h"
-#include "events/event.h"
 #include "events/applicationEvent.h"
-#include "log.h"
+#include <GLFW/glfw3.h>
 
 namespace xten {
 
 	Application::Application()
 	{
+		_window = std::unique_ptr<Window>(Window::create());
 	}
 
 	Application::~Application()
@@ -15,9 +16,11 @@ namespace xten {
 
 	void Application::run()
 	{
-		WindowResizeEvent evt(1200, 780);
-		XT_TRACE(evt);
-		while (true);
+		while (_running) {
+			glClearColor(1, 0, 1, 1);
+			glClear(GL_COLOR_BUFFER_BIT);
+			_window->onUpdate();
+		}
 	}
 
 }
