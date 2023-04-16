@@ -64,14 +64,17 @@ project "xTen"
 
 	filter "configurations:debug"
 		defines "XT_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:release"
 		defines "XT_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:dist"
 		defines "XT_DIST"
+		buildoptions "/MD"
 		optimize "On"
 
 project "sandbox"
@@ -111,12 +114,15 @@ project "sandbox"
 
 	filter "configurations:debug"
 		defines "XT_DEBUG"
+		buildoptions "/MDd"
 		symbols "On"
 
 	filter "configurations:release"
 		defines "XT_RELEASE"
+		buildoptions "/MD"
 		optimize "On"
 
 	filter "configurations:dist"
 		defines "XT_DIST"
+		buildoptions "/MD"
 		optimize "On"

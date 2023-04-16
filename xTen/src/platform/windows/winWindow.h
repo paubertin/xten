@@ -40,6 +40,8 @@ namespace xten {
 
 		WindowData _data;
 
+		void setEventCallbacks();
+
 	};
 
 }

@@ -40,6 +40,12 @@
     <ClInclude Include="src\xten\events\mouseEvent.h">
       <Filter>xten\events</Filter>
     </ClInclude>
+    <ClInclude Include="src\xten\layer.h">
+      <Filter>xten</Filter>
+    </ClInclude>
+    <ClInclude Include="src\xten\layerstack.h">
+      <Filter>xten</Filter>
+    </ClInclude>
     <ClInclude Include="src\xten\log.h">
       <Filter>xten</Filter>
     </ClInclude>
@@ -53,6 +59,12 @@
       <Filter>platform\windows</Filter>
     </ClCompile>
     <ClCompile Include="src\xten\application.cpp">
+      <Filter>xten</Filter>
+    </ClCompile>
+    <ClCompile Include="src\xten\layer.cpp">
+      <Filter>xten</Filter>
+    </ClCompile>
+    <ClCompile Include="src\xten\layerstack.cpp">
       <Filter>xten</Filter>
     </ClCompile>
     <ClCompile Include="src\xten\log.cpp">

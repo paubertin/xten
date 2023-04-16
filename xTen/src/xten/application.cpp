@@ -1,13 +1,15 @@
 #include "xtpch.h"
 #include "application.h"
-#include "events/applicationEvent.h"
 #include <GLFW/glfw3.h>
 
 namespace xten {
 
+#define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
+
 	Application::Application()
 	{
 		_window = std::unique_ptr<Window>(Window::create());
+		_window->setEventCallback(BIND_EVENT_FN(Application::onEvent));
 	}
 
 	Application::~Application()
@@ -19,8 +21,42 @@ namespace xten {
 		while (_running) {
 			glClearColor(1, 0, 1, 1);
 			glClear(GL_COLOR_BUFFER_BIT);
+
+			for (Layer* layer : _layerStack) {
+				layer->onUpdate();
+			}
+
 			_window->onUpdate();
 		}
+	}
+
+	void Application::onEvent(Event& e)
+	{
+		EventDispatcher dispatcher(e);
+		dispatcher.dispatch<WindowCloseEvent>(BIND_EVENT_FN(Application::onWindowClose));
+
+		for (auto it = _layerStack.end(); it != _layerStack.begin(); ) {
+			(*--it)->onEvent(e);
+			if (e.handled) {
+				break;
+			}
+		}
+	}
+
+	void Application::pushLayer(Layer* layer)
+	{
+		_layerStack.pushLayer(layer);
+	}
+
+	void Application::pushOverlay(Layer* layer)
+	{
+		_layerStack.pushOverlay(layer);
+	}
+
+	bool Application::onWindowClose(WindowCloseEvent& evt)
+	{
+		_running = false;
+		return true;
 	}
 
 }

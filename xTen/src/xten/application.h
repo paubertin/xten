@@ -2,6 +2,8 @@
 
 #include "core.h"
 #include "window.h"
+#include "events/applicationEvent.h"
+#include "layerstack.h"
 
 namespace xten {
 
@@ -13,9 +15,15 @@ namespace xten {
 
 		void run();
 
+		void onEvent(Event& e);
+
+		void pushLayer(Layer* layer);
+		void pushOverlay(Layer* layer);
 	private:
+		bool onWindowClose(WindowCloseEvent& evt);
 		std::unique_ptr<Window> _window;
 		bool _running = true;
+		LayerStack _layerStack;
 	};
 
 	// to be defined in client

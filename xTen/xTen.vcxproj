@@ -84,6 +84,7 @@
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -110,6 +111,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -137,6 +139,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -161,6 +164,8 @@
     <ClInclude Include="src\xten\events\event.h" />
     <ClInclude Include="src\xten\events\keyEvent.h" />
     <ClInclude Include="src\xten\events\mouseEvent.h" />
+    <ClInclude Include="src\xten\layer.h" />
+    <ClInclude Include="src\xten\layerstack.h" />
     <ClInclude Include="src\xten\log.h" />
     <ClInclude Include="src\xten\window.h" />
     <ClInclude Include="src\xtpch.h" />
@@ -168,6 +173,8 @@
   <ItemGroup>
     <ClCompile Include="src\platform\windows\winWindow.cpp" />
     <ClCompile Include="src\xten\application.cpp" />
+    <ClCompile Include="src\xten\layer.cpp" />
+    <ClCompile Include="src\xten\layerstack.cpp" />
     <ClCompile Include="src\xten\log.cpp" />
     <ClCompile Include="src\xtpch.cpp">
       <PrecompiledHeader>Create</PrecompiledHeader>

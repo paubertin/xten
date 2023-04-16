@@ -46,8 +46,7 @@ namespace xten {
 			return getCategoryFlags() & category;
 		}
 
-	protected:
-		bool _handled = false;
+		bool handled = false;
 	};
 
 	class EventDispatcher
@@ -62,7 +61,7 @@ namespace xten {
 		template<typename T>
 		bool dispatch(EventFn<T> func) {
 			if (_event.getEventType() == T::getStaticType()) {
-				_event._handled = func(*(T*)&_event);
+				_event.handled = func(*(T*)&_event);
 				return true;
 			}
 			return false;
