@@ -4,6 +4,7 @@
 #include "xten/events/applicationEvent.h"
 #include "xten/events/keyEvent.h"
 #include "xten/events/mouseEvent.h"
+#include <glad/glad.h>
 
 namespace xten {
 
@@ -56,6 +57,8 @@ namespace xten {
 
 		_window = glfwCreateWindow((int)props.width, (int)props.height, _data.title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(_window);
+		int status = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		XT_CORE_ASSERT(status, "Failed to initialize Glad...");
 		glfwSetWindowUserPointer(_window, &_data);
 		setVSync(true);
 

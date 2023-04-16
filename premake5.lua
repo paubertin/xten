@@ -13,8 +13,10 @@ outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
 -- include directories relative to root folder
 IncludeDir = {}
 IncludeDir["GLFW"] = "xTen/vendor/GLFW/include"
+IncludeDir["Glad"] = "xTen/vendor/Glad/include"
 
 include "xTen/vendor/GLFW"
+include "xTen/vendor/Glad"
 
 project "xTen"
 	location "xTen"
@@ -37,12 +39,14 @@ project "xTen"
 	{
 		"%{prj.name}/vendor/spdlog/include",
 		"%{prj.name}/src",
-		"%{IncludeDir.GLFW}"
+		"%{IncludeDir.GLFW}",
+		"%{IncludeDir.Glad}"
 	}
 
 	links
 	{
 		"GLFW",
+		"Glad",
 		"opengl32.lib"
 	}
 
@@ -54,7 +58,8 @@ project "xTen"
 		defines
 		{
 			"XT_PLATFORM_WINDOWS",
-			"XT_BUILD_DLL"
+			"XT_BUILD_DLL",
+			"GLFW_INCLUDE_NONE"
 		}
 
 		postbuildcommands
