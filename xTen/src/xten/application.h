@@ -19,11 +19,17 @@ namespace xten {
 
 		void pushLayer(Layer* layer);
 		void pushOverlay(Layer* layer);
+
+		inline static Application& get() { return *Application::instance; }
+
+		inline Window& getWindow() { return *_window; }
 	private:
 		bool onWindowClose(WindowCloseEvent& evt);
 		std::unique_ptr<Window> _window;
 		bool _running = true;
 		LayerStack _layerStack;
+
+		static Application* instance;
 	};
 
 	// to be defined in client

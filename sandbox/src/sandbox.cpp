@@ -10,7 +10,7 @@ public:
 
 	void onUpdate() override
 	{
-		XT_INFO("ExampleLayer::update");
+		// XT_INFO("ExampleLayer::update");
 	}
 
 	void onEvent(xten::Event& evt) override
@@ -25,6 +25,7 @@ public:
 	Sandbox()
 	{
 		pushLayer(new ExampleLayer());
+		pushOverlay(new xten::ImGuiLayer());
 	}
 
 	~Sandbox()

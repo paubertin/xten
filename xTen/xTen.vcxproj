@@ -80,7 +80,7 @@
       <PrecompiledHeaderFile>xtpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>XT_PLATFORM_WINDOWS;XT_BUILD_DLL;GLFW_INCLUDE_NONE;XT_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
@@ -104,7 +104,7 @@
       <PrecompiledHeaderFile>xtpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>XT_PLATFORM_WINDOWS;XT_BUILD_DLL;GLFW_INCLUDE_NONE;XT_RELEASE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -132,7 +132,7 @@
       <PrecompiledHeaderFile>xtpch.h</PrecompiledHeaderFile>
       <WarningLevel>Level3</WarningLevel>
       <PreprocessorDefinitions>XT_PLATFORM_WINDOWS;XT_BUILD_DLL;GLFW_INCLUDE_NONE;XT_DIST;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Full</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -155,6 +155,7 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\platform\opengl\imguiOpenGLRenderer.h" />
     <ClInclude Include="src\platform\windows\winWindow.h" />
     <ClInclude Include="src\xten.h" />
     <ClInclude Include="src\xten\application.h" />
@@ -164,6 +165,7 @@
     <ClInclude Include="src\xten\events\event.h" />
     <ClInclude Include="src\xten\events\keyEvent.h" />
     <ClInclude Include="src\xten\events\mouseEvent.h" />
+    <ClInclude Include="src\xten\imgui\imguiLayer.h" />
     <ClInclude Include="src\xten\layer.h" />
     <ClInclude Include="src\xten\layerstack.h" />
     <ClInclude Include="src\xten\log.h" />
@@ -171,8 +173,10 @@
     <ClInclude Include="src\xtpch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\platform\opengl\imguiOpenGLRenderer.cpp" />
     <ClCompile Include="src\platform\windows\winWindow.cpp" />
     <ClCompile Include="src\xten\application.cpp" />
+    <ClCompile Include="src\xten\imgui\imguiLayer.cpp" />
     <ClCompile Include="src\xten\layer.cpp" />
     <ClCompile Include="src\xten\layerstack.cpp" />
     <ClCompile Include="src\xten\log.cpp" />
@@ -186,6 +190,9 @@
     </ProjectReference>
     <ProjectReference Include="vendor\Glad\Glad.vcxproj">
       <Project>{BDD6857C-A90D-870D-52FA-6C103E10030F}</Project>
+    </ProjectReference>
+    <ProjectReference Include="vendor\imgui\ImGui.vcxproj">
+      <Project>{C0FF640D-2C14-8DBE-F595-301E616989EF}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

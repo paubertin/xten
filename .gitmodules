@@ -4,3 +4,6 @@
 [submodule ".\\xTen\\vendor\\GLFW"]
 	path = .\\xTen\\vendor\\GLFW
 	url = https://github.com/paubertin/glfw
+[submodule ".\\xTen\\vendor\\imgui"]
+	path = .\\xTen\\vendor\\imgui
+	url = https://github.com/paubertin/imgui

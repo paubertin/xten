@@ -113,6 +113,14 @@ namespace xten {
 				}
 			});
 
+		glfwSetCharCallback(
+			_window,
+			[](GLFWwindow* window, unsigned int keycode) {
+				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
+				KeyTypedEvent event(keycode);
+				data.eventCallback(event);
+			});
+
 		glfwSetMouseButtonCallback(
 			_window,
 			[](GLFWwindow* window, int button, int action, int mods) {

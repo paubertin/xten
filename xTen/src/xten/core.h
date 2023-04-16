@@ -19,3 +19,6 @@ constexpr auto BIT(int x) { return (1 << x); }
 	#define XT_ASSERT(x, ...)
 	#define XT_CORE_ASSERT(x, ...)
 #endif // XT_ENABLE_ASSERTS
+
+
+#define BIND_EVENT_FN(fn) std::bind(&fn, this, std::placeholders::_1)

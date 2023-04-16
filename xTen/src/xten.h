@@ -5,6 +5,7 @@
 #include "xten/application.h"
 #include "xten/layer.h"
 #include "xten/log.h"
+#include "xten/imgui/imguiLayer.h"
 
 // Entry point ===========================================
 #include "xten/entrypoint.h"

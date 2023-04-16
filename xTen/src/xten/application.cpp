@@ -4,13 +4,14 @@
 
 namespace xten {
 
-#define BIND_EVENT_FN(x) std::bind(&x, this, std::placeholders::_1)
+	Application* Application::instance = nullptr;
 
 	Application::Application()
 	{
+		XT_CORE_ASSERT(!instance, "Application already exists.");
+		instance = this;
 		_window = std::unique_ptr<Window>(Window::create());
 		_window->setEventCallback(BIND_EVENT_FN(Application::onEvent));
-
 	}
 
 	Application::~Application()
@@ -47,11 +48,13 @@ namespace xten {
 	void Application::pushLayer(Layer* layer)
 	{
 		_layerStack.pushLayer(layer);
+		layer->onAttach();
 	}
 
 	void Application::pushOverlay(Layer* layer)
 	{
 		_layerStack.pushOverlay(layer);
+		layer->onAttach();
 	}
 
 	bool Application::onWindowClose(WindowCloseEvent& evt)
