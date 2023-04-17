@@ -10,12 +10,17 @@ public:
 
 	void onUpdate() override
 	{
-		// XT_INFO("ExampleLayer::update");
+		if (xten::Input::isKeyPressed(XT_KEY_A))
+			XT_TRACE("'A' key is pressed");
 	}
 
 	void onEvent(xten::Event& evt) override
 	{
-		XT_TRACE("{0}", evt);
+		if (evt.getEventType() == xten::EventType::KeyPressed) {
+			xten::KeyPressedEvent& e = (xten::KeyPressedEvent&)evt;
+;			XT_TRACE("{0}", (char)e.getKeyCode());
+
+		}
 	}
 };
 

@@ -2,6 +2,8 @@
 #include "application.h"
 #include <glad/glad.h>
 
+#include <xten/input.h>
+
 namespace xten {
 
 	Application* Application::instance = nullptr;

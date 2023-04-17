@@ -22,6 +22,8 @@ namespace xten {
 		void setVSync(bool enabled);
 		bool isVSync() const;
 
+		inline virtual void* getNativeWindow() const { return _window; }
+
 	private:
 		virtual void init(const WindowProps& props);
 		virtual void shutdown();

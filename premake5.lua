@@ -1,6 +1,8 @@
 workspace "xTen"
 	architecture "x64"
 
+	startproject "sandbox"
+
 	configurations
 	{
 		"debug",
@@ -16,14 +18,18 @@ IncludeDir["GLFW"] = "xTen/vendor/GLFW/include"
 IncludeDir["Glad"] = "xTen/vendor/Glad/include"
 IncludeDir["ImGui"] = "xTen/vendor/imgui"
 
-include "xTen/vendor/GLFW"
-include "xTen/vendor/Glad"
-include "xTen/vendor/imgui"
+group "dependencies"
+	include "xTen/vendor/GLFW"
+	include "xTen/vendor/Glad"
+	include "xTen/vendor/imgui"
+
+group ""
 
 project "xTen"
 	location "xTen"
 	kind "SharedLib"
 	language "C++"
+	staticruntime "off"
 
 	targetdir  ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir  ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -56,7 +62,6 @@ project "xTen"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -68,28 +73,29 @@ project "xTen"
 
 		postbuildcommands
 		{
-			("{COPYFILE} %{cfg.buildtarget.relpath} ../bin/" .. outputdir .. "/sandbox")
+			("{COPY} %{cfg.buildtarget.relpath} \"../bin/" .. outputdir .. "/sandbox/\"")
 		}
 
 	filter "configurations:debug"
 		defines "XT_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:release"
 		defines "XT_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:dist"
 		defines "XT_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 project "sandbox"
 	location "sandbox"
 	kind "ConsoleApp"
 	language "C++"
+	staticruntime "off"
 
 	targetdir  ("bin/" .. outputdir .. "/%{prj.name}")
 	objdir  ("bin-int/" .. outputdir .. "/%{prj.name}")
@@ -113,7 +119,6 @@ project "sandbox"
 
 	filter "system:windows"
 		cppdialect "C++17"
-		staticruntime "On"
 		systemversion "latest"
 
 		defines
@@ -123,15 +128,15 @@ project "sandbox"
 
 	filter "configurations:debug"
 		defines "XT_DEBUG"
-		buildoptions "/MDd"
+		runtime "Debug"
 		symbols "On"
 
 	filter "configurations:release"
 		defines "XT_RELEASE"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"
 
 	filter "configurations:dist"
 		defines "XT_DIST"
-		buildoptions "/MD"
+		runtime "Release"
 		optimize "On"

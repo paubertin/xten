@@ -94,22 +94,28 @@ namespace xten {
 			[](GLFWwindow* window, int key, int scancode, int action, int mods) {
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
+				/*
+				XT_CORE_TRACE("key: {0} / scancode: {1} / action: {2}, mods: {3}", key, scancode, action, mods);
+				auto keyName = glfwGetKeyName(key, scancode);
+				XT_CORE_TRACE("keyName {0}", keyName);
+				*/
+
 				switch (action) {
-				case GLFW_PRESS: {
-					KeyPressedEvent event(key, 0);
-					data.eventCallback(event);
-					break;
-				}
-				case GLFW_RELEASE: {
-					KeyReleasedEvent event(key);
-					data.eventCallback(event);
-					break;
-				}
-				case GLFW_REPEAT: {
-					KeyPressedEvent event(key, 1);
-					data.eventCallback(event);
-					break;
-				}
+					case GLFW_PRESS: {
+						KeyPressedEvent event(key, 0);
+						data.eventCallback(event);
+						break;
+					}
+					case GLFW_RELEASE: {
+						KeyReleasedEvent event(key);
+						data.eventCallback(event);
+						break;
+					}
+					case GLFW_REPEAT: {
+						KeyPressedEvent event(key, 1);
+						data.eventCallback(event);
+						break;
+					}
 				}
 			});
 
@@ -127,16 +133,16 @@ namespace xten {
 				WindowData& data = *(WindowData*)glfwGetWindowUserPointer(window);
 
 				switch (action) {
-				case GLFW_PRESS: {
-					MouseButtonPressedEvent event(button);
-					data.eventCallback(event);
-					break;
-				}
-				case GLFW_RELEASE: {
-					MouseButtonReleasedEvent event(button);
-					data.eventCallback(event);
-					break;
-				}
+					case GLFW_PRESS: {
+						MouseButtonPressedEvent event(button);
+						data.eventCallback(event);
+						break;
+					}
+					case GLFW_RELEASE: {
+						MouseButtonReleasedEvent event(button);
+						data.eventCallback(event);
+						break;
+					}
 				}
 			});
 

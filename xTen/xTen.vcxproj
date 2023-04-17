@@ -83,8 +83,7 @@
       <AdditionalIncludeDirectories>vendor\spdlog\include;src;vendor\GLFW\include;vendor\Glad\include;vendor\imgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
-      <AdditionalOptions>/MDd %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -95,7 +94,7 @@
       <ImportLibrary>..\bin\debug-windows-x86_64\xTen\xTen.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy /B /Y ..\bin\debug-windows-x86_64\xTen\xTen.dll ..\bin\debug-windows-x86_64\sandbox</Command>
+      <Command>IF EXIST ..\bin\debug-windows-x86_64\xTen\xTen.dll\ (xcopy /Q /E /Y /I ..\bin\debug-windows-x86_64\xTen\xTen.dll "..\bin\debug-windows-x86_64\sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\debug-windows-x86_64\xTen\xTen.dll "..\bin\debug-windows-x86_64\sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
@@ -110,8 +109,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -123,7 +121,7 @@
       <ImportLibrary>..\bin\release-windows-x86_64\xTen\xTen.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy /B /Y ..\bin\release-windows-x86_64\xTen\xTen.dll ..\bin\release-windows-x86_64\sandbox</Command>
+      <Command>IF EXIST ..\bin\release-windows-x86_64\xTen\xTen.dll\ (xcopy /Q /E /Y /I ..\bin\release-windows-x86_64\xTen\xTen.dll "..\bin\release-windows-x86_64\sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\release-windows-x86_64\xTen\xTen.dll "..\bin\release-windows-x86_64\sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='dist|x64'">
@@ -138,8 +136,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
-      <AdditionalOptions>/MD %(AdditionalOptions)</AdditionalOptions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <ExternalWarningLevel>Level3</ExternalWarningLevel>
     </ClCompile>
@@ -151,11 +148,12 @@
       <ImportLibrary>..\bin\dist-windows-x86_64\xTen\xTen.lib</ImportLibrary>
     </Link>
     <PostBuildEvent>
-      <Command>copy /B /Y ..\bin\dist-windows-x86_64\xTen\xTen.dll ..\bin\dist-windows-x86_64\sandbox</Command>
+      <Command>IF EXIST ..\bin\dist-windows-x86_64\xTen\xTen.dll\ (xcopy /Q /E /Y /I ..\bin\dist-windows-x86_64\xTen\xTen.dll "..\bin\dist-windows-x86_64\sandbox\" &gt; nul) ELSE (xcopy /Q /Y /I ..\bin\dist-windows-x86_64\xTen\xTen.dll "..\bin\dist-windows-x86_64\sandbox\" &gt; nul)</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="src\platform\opengl\imguiOpenGLRenderer.h" />
+    <ClInclude Include="src\platform\windows\winInput.h" />
     <ClInclude Include="src\platform\windows\winWindow.h" />
     <ClInclude Include="src\xten.h" />
     <ClInclude Include="src\xten\application.h" />
@@ -166,14 +164,18 @@
     <ClInclude Include="src\xten\events\keyEvent.h" />
     <ClInclude Include="src\xten\events\mouseEvent.h" />
     <ClInclude Include="src\xten\imgui\imguiLayer.h" />
+    <ClInclude Include="src\xten\input.h" />
+    <ClInclude Include="src\xten\keycodes.h" />
     <ClInclude Include="src\xten\layer.h" />
     <ClInclude Include="src\xten\layerstack.h" />
     <ClInclude Include="src\xten\log.h" />
+    <ClInclude Include="src\xten\mousebuttoncodes.h" />
     <ClInclude Include="src\xten\window.h" />
     <ClInclude Include="src\xtpch.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\platform\opengl\imguiOpenGLRenderer.cpp" />
+    <ClCompile Include="src\platform\windows\winInput.cpp" />
     <ClCompile Include="src\platform\windows\winWindow.cpp" />
     <ClCompile Include="src\xten\application.cpp" />
     <ClCompile Include="src\xten\imgui\imguiLayer.cpp" />
