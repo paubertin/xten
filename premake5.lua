@@ -17,6 +17,7 @@ IncludeDir = {}
 IncludeDir["GLFW"] = "xTen/vendor/GLFW/include"
 IncludeDir["Glad"] = "xTen/vendor/Glad/include"
 IncludeDir["ImGui"] = "xTen/vendor/imgui"
+IncludeDir["glm"] = "xTen/vendor/glm"
 
 group "dependencies"
 	include "xTen/vendor/GLFW"
@@ -40,7 +41,9 @@ project "xTen"
 	files
 	{
 		"%{prj.name}/src/**.h",
-		"%{prj.name}/src/**.cpp"
+		"%{prj.name}/src/**.cpp",
+		"%{prj.name}/vendor/glm/glm/**.hpp",
+		"%{prj.name}/vendor/glm/glm/**.inl"
 	}
 
 	includedirs
@@ -49,7 +52,8 @@ project "xTen"
 		"%{prj.name}/src",
 		"%{IncludeDir.GLFW}",
 		"%{IncludeDir.Glad}",
-		"%{IncludeDir.ImGui}"
+		"%{IncludeDir.ImGui}",
+		"%{IncludeDir.glm}"
 	}
 
 	links
@@ -109,7 +113,8 @@ project "sandbox"
 	includedirs
 	{
 		"xTen/vendor/spdlog/include",
-		"xTen/src"
+		"xTen/src",
+		"%{IncludeDir.glm}"
 	}
 
 	links

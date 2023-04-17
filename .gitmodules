@@ -7,3 +7,6 @@
 [submodule ".\\xTen\\vendor\\imgui"]
 	path = .\\xTen\\vendor\\imgui
 	url = https://github.com/paubertin/imgui
+[submodule ".\\xTen\\vendor\\glm"]
+	path = .\\xTen\\vendor\\glm
+	url = https://github.com/g-truc/glm
